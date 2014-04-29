@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<!DOCTYPE coverage
+  SYSTEM 'http://cobertura.sourceforge.net/xml/coverage-03.dtd'>
+<coverage branch-rate="<%= branch_rate %>" line-rate="<%= line_rate %>"
+ timestamp="<%= Time.now.to_i %>" version="rcov2cobertura <%= Rcov2Cobertura::VERSION %>">
+ <sources>
+  <source>.</source>
+ </sources>
+ <packages>
+  <package branch-rate="<%= branch_rate %>" complexity="0.0"
+   line-rate="<%= line_rate %>" name="">
+   <classes>
+% covered_files.each do |file|
+    <class branch-rate="<%= file[:branch_rate] %>" complexity="0.0"
+     filename="<%= file[:name] %>" line-rate="<%= file[:line_rate] %>" name="<%= file[:name].gsub(/[^a-zA-Z0-9]/,'_') %>">
+     <methods/>
+     <lines>
+% file[:lines].each_with_index do |line,i|
+%  next unless is_loc?(line)
+      <line number="<%= i + 1 %>" hits="<%= file[:counts][i] %>"/>
+% end # each line
+     </lines>
+    </class>
+% end # each file
+   </classes>
+  </package>
+ </packages>
+</coverage>
