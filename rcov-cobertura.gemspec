@@ -16,4 +16,6 @@ end
   s.homepage    =
     'http://rubygems.org/gems/rcov-cobertura'
   s.license       = 'MIT'
+
+  s.add_development_dependency 'mocha', '~> 1.0.0'
 end
