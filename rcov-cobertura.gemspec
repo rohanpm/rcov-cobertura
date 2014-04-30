@@ -18,4 +18,5 @@ end
   s.license       = 'MIT'
 
   s.add_development_dependency 'mocha', '~> 1.0.0'
+  s.test_files = Dir["test/*_test.rb"]
 end
